@@ -8,9 +8,9 @@ export class UsersService {
     {'id': 0, email: 'jan.kowalski@gmail.com', password: 'test1234'},
     {'id': 1, email: 'ewa.kowalska@gmail.com', password: 'test1234'},
     {'id': 2, email: 'nowak.marcin@o2.pl', password: 'test5678'},
-    {'id:' 3, email: 'nowak.edyta@o2.pl', password: 'test5678'}
+    {'id': 3, email: 'nowak.edyta@o2.pl', password: 'test5678'}
   ]
-  private loggedUser = {};
+  private loggedUser = { 'id': 0, email: 'jan.kowalski@gmail.com', password: 'test1234' };
 
   constructor() { }
 
@@ -22,7 +22,7 @@ export class UsersService {
     return this.loggedUser;
   }
 
-  setLoggedUser(loggedUser) {
+/*  setLoggedUser(loggedUser: object) {
     this.loggedUser = loggedUser;
-  }
+  }*/
 }
