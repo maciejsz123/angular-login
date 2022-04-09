@@ -1,8 +1,8 @@
 
 <div class='center'>
-  <div class='data-info'>
+  <div class='data-info' *ngIf="isLogged">
     <span>logged user: </span>
-    <span>{{ loggedUser.email }}</span>
+    <span>{{ loggedUser }}</span>
 
       <a routerLink="/">
         <button type='button'>
@@ -10,5 +10,13 @@
         </button>
       </a>
 
+  </div>
+  <div class='data-info' *ngIf="!isLogged">
+    <span>you are not logged in</span>
+    <a routerLink="/">
+      <button type='button'>
+        click to log in
+      </button>
+    </a>
   </div>
 <div>

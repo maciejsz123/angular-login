@@ -10,7 +10,9 @@ export class UsersService {
     {'id': 2, email: 'nowak.marcin@o2.pl', password: 'test5678'},
     {'id': 3, email: 'nowak.edyta@o2.pl', password: 'test5678'}
   ]
-  private loggedUser = { 'id': 0, email: 'jan.kowalski@gmail.com', password: 'test1234' };
+
+  isLogged: boolean = false;
+
   email: string = '';
   password: string = '';
 
@@ -21,7 +23,7 @@ export class UsersService {
   }
 
   getLoggedUser() {
-    return this.loggedUser;
+    return this.email;
   }
 
   getEmail() {
@@ -38,6 +40,10 @@ export class UsersService {
 
   setPassword(pass: string) {
     this.password = pass;
+  }
+
+  getIsLogged() {
+    return this.isLogged;
   }
 
 /*  setLoggedUser(loggedUser: object) {

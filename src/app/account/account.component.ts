@@ -8,12 +8,14 @@ import { UsersService } from '../users.service';
 })
 export class AccountComponent implements OnInit {
 
-  loggedUser = {id: 0, email: '', password: ''};
+  loggedUser: string = '';
+  isLogged: boolean = false;
 
   constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
     this.loggedUser = this.usersService.getLoggedUser();
+    this.isLogged = this.usersService.getIsLogged();
   }
 
 }
