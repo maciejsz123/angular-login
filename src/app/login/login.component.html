@@ -1,9 +1,9 @@
 <div class='center'>
   <form class='form-style'>
     <label>email: </label>
-    <input id='email' type='string' placeholder='e-mail'>
+    <input id='email' name='email' type='text' placeholder='e-mail' [(ngModel)]="email">
     <label>password: </label>
-    <input id='password' type='password' placeholder='password'>
+    <input id='password' name='password' type='password' placeholder='password' minlength='8' [(ngModel)]='password'>
 
       <a routerLink="/konto">
         <button type='button'>

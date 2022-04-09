@@ -11,6 +11,8 @@ export class UsersService {
     {'id': 3, email: 'nowak.edyta@o2.pl', password: 'test5678'}
   ]
   private loggedUser = { 'id': 0, email: 'jan.kowalski@gmail.com', password: 'test1234' };
+  email: string = '';
+  password: string = '';
 
   constructor() { }
 
@@ -20,6 +22,22 @@ export class UsersService {
 
   getLoggedUser() {
     return this.loggedUser;
+  }
+
+  getEmail() {
+    return this.email;
+  }
+
+  getPassword() {
+    return this.password;
+  }
+
+  setEmail(email: string) {
+    this.email = email;
+  }
+
+  setPassword(pass: string) {
+    this.password = pass;
   }
 
 /*  setLoggedUser(loggedUser: object) {
