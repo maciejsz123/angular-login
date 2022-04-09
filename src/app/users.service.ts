@@ -22,6 +22,10 @@ export class UsersService {
     return this.users;
   }
 
+  setUsers(users: []) {
+    this.users = users
+  }
+
   getLoggedUser() {
     return this.email;
   }
@@ -44,6 +48,18 @@ export class UsersService {
 
   getIsLogged() {
     return this.isLogged;
+  }
+
+  setIsLogged(isLogged: boolean) {
+    this.isLogged = isLogged;
+  }
+
+  setLocalStorage() {
+    return {
+      isLogged: this.isLogged,
+      email: this.email,
+      users: this.users
+    }
   }
 
 /*  setLoggedUser(loggedUser: object) {
