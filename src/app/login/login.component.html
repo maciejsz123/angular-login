@@ -1,15 +1,12 @@
 <div class='center'>
-  <form class='form-style'>
+  <form class='form-style' (ngSubmit)='onSubmit()'>
     <label>email: </label>
     <input id='email' name='email' type='text' placeholder='e-mail' [(ngModel)]="email">
     <label>password: </label>
     <input id='password' name='password' type='password' placeholder='password' minlength='8' [(ngModel)]='password'>
 
-      <a routerLink="/konto">
-        <button type='button'>
-          login
-        </button>
-      </a>
-
+    <button type='submit'>
+      login
+    </button>
   </form>
 </div>
