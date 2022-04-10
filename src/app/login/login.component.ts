@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   users: any[] = [];
+  failedLoginMessage: string = '';
 
   constructor(private usersService: UsersService, private router: Router) { }
 
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
     let logged = this.users.find( user => user.email === this.email && user.password === this.password);
 
     if(!logged) {
-      console.log('email lub haslo nieprawidłowe');
+      this.failedLoginMessage = 'email lub haslo nieprawidłowe';
     } else {
       this.usersService.setIsLogged(true);
       this.router.navigate(['konto'])
