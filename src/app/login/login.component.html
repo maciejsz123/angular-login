@@ -1,13 +1,39 @@
-<div class='center form-style'>
-  <form class='form-style' (ngSubmit)='onSubmit()'>
-    <label>email: </label>
-    <input id='email' name='email' type='text' placeholder='e-mail' [(ngModel)]="email">
-    <label>password: </label>
-    <input id='password' name='password' type='password' placeholder='password' minlength='8' [(ngModel)]='password'>
+<div class='center'>
+  <div>
 
-    <button type='submit'>
-      login
-    </button>
-  </form>
-  <span class='color-red'>{{ failedLoginMessage }}</span>
+    <div class='flex'>
+      <button type='button' class='small-button' (click)='setLogin(true)'>login</button>
+      <button type='button' class='small-button' (click)='setLogin(false)'>register</button>
+    </div>
+
+    <div class='form-style' *ngIf='loginActive'>
+      <form class='form-style' (ngSubmit)='onSubmit()'>
+        <label>email: </label>
+        <input id='email' name='email' type='text' placeholder='e-mail' [(ngModel)]="email">
+        <label>password: </label>
+        <input id='password' name='password' type='password' placeholder='password' minlength='8' [(ngModel)]='password'>
+
+        <button type='submit'>
+          login
+        </button>
+      </form>
+      <span class='color-red'>{{ failedLoginMessage }}</span>
+    </div>
+
+
+    <div class='form-style' *ngIf='!loginActive'>
+      <form class='form-style' (ngSubmit)='onSubmitRegister()'>
+        <label>email: </label>
+        <input id='email' name='email' type='text' placeholder='e-mail' [(ngModel)]="email">
+        <label>password: </label>
+        <input id='password' name='password' type='password' placeholder='password' minlength='8' [(ngModel)]='password'>
+
+        <button type='submit'>
+          register
+        </button>
+      </form>
+    </div>
+
+
+  </div>
 </div>

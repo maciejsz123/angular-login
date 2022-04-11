@@ -12,6 +12,12 @@ export class LoginComponent implements OnInit {
   password: string = '';
   users: any[] = [];
   failedLoginMessage: string = '';
+  emailCheck: string = '';
+  passNumberCheck: string = '';
+  passUpperCaseCheck: string = '';
+  passLowerCaseCheck: string = '';
+  passLengthCheck: string = '';
+  loginActive: boolean = true;
 
   constructor(private usersService: UsersService, private router: Router) { }
 
@@ -36,6 +42,36 @@ export class LoginComponent implements OnInit {
       this.usersService.setIsLogged(true);
       this.router.navigate(['konto'])
     }
+  }
+
+  setLogin(value: boolean) {
+    this.loginActive = value;
+  }
+
+  onSubmitRegister(): void {
+    let registered = this.users.find( user => user.email === this.email);
+    this.emailValidation();
+    this.passwordValidation();
+
+    if(registered) {
+      this.failedLoginMessage = 'taki użytkownik już istnieje';
+    } else {
+      this.loginActive = true;
+    }
+  }
+
+  emailValidation(): boolean {
+    let regex = /\S+@\S+.\S/
+    return regex.test(this.email);
+  }
+
+  passwordValidation(): boolean {
+    let number = /[0-9]/.test(this.password);
+    let upperCase = /[A-Z]/.test(this.password);
+    let lowerCase = /[a-z]/.test(this.password);
+    let length = this.password.length > 8;
+
+    return number && upperCase && lowerCase && length;
   }
 
   ngOnInit(): void {

@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class UsersService {
   private users = [
-    {'id': 0, email: 'jan.kowalski@gmail.com', password: 'test1234'},
-    {'id': 1, email: 'ewa.kowalska@gmail.com', password: 'test1234'},
-    {'id': 2, email: 'nowak.marcin@o2.pl', password: 'test5678'},
-    {'id': 3, email: 'nowak.edyta@o2.pl', password: 'test5678'}
+    {'id': 0, email: 'jan.kowalski@gmail.com', password: 'Test12345'},
+    {'id': 1, email: 'ewa.kowalska@gmail.com', password: 'Test12345'},
+    {'id': 2, email: 'nowak.marcin@o2.pl', password: 'Test56789'},
+    {'id': 3, email: 'nowak.edyta@o2.pl', password: 'Test56789'}
   ]
 
   isLogged: boolean = false;
