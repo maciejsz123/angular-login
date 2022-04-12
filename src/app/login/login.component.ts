@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   password: string = '';
   users: any[] = [];
   failedLoginMessage: string = '';
+  failedRegisterMessage: string = '';
   emailCheck: string = '';
   passNumberCheck: string = '';
   passUpperCaseCheck: string = '';
@@ -50,13 +51,15 @@ export class LoginComponent implements OnInit {
 
   onSubmitRegister(): void {
     let registered = this.users.find( user => user.email === this.email);
-    this.emailValidation();
-    this.passwordValidation();
+    let emailCheck = this.emailValidation();
+    let passwordCheck = this.passwordValidation();    
 
     if(registered) {
-      this.failedLoginMessage = 'taki użytkownik już istnieje';
+      this.failedRegisterMessage = 'taki użytkownik już istnieje';
+    } else if(emailCheck && passwordCheck){
+      this.usersService.addUser(this.email, this.password)
     } else {
-      this.loginActive = true;
+      this.failedRegisterMessage = '';
     }
   }
 
@@ -70,6 +73,11 @@ export class LoginComponent implements OnInit {
     let upperCase = /[A-Z]/.test(this.password);
     let lowerCase = /[a-z]/.test(this.password);
     let length = this.password.length > 8;
+
+    this.passNumberCheck = number ? '' : 'hasło musi zawierać przynajmnniej jedną cyfrę';
+    this.passUpperCaseCheck = upperCase ? '' : 'hasło musi zawierać przynajmnniej jedną dużą literę';
+    this.passLowerCaseCheck = lowerCase ? '' : 'hasło musi zawierać przynajmnniej jedną małą literę';
+    this.passLengthCheck = length ? '' : 'hasło musi zawierać przynajmnniej 8 znaków';
 
     return number && upperCase && lowerCase && length;
   }

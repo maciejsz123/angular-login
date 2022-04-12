@@ -22,6 +22,11 @@ export class UsersService {
     return this.users;
   }
 
+  addUser(email: string, password: string) {
+    let id = this.users.length
+    this.users.push({id, email, password})
+  }
+
   setUsers(users: []) {
     this.users = users
   }
